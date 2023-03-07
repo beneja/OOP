@@ -13,4 +13,14 @@ public class GeoTree {
         tree.add(new Node(children, Relationship.children, parent));
     }
 
+    public void appendSibling(Person sibling1, Person sibling2){
+        tree.add(new Node(sibling1, Relationship.sibling, sibling2));
+    }
+
+    @Override
+    public String toString() {
+        return "GeoTree{" +
+                "tree=" + tree +
+                '}';
+    }
 }
