@@ -2,23 +2,19 @@ package sem1.homework.GeoTree;
 public class Main {
 
     public static void main(String[] args) {
-        Person irina = new Person("Ирина");
-        irina.setAge(10);
-        Person vasya = new Person("Вася");
-        vasya.setAge(11);
-        Person masha = new Person("Маша");
-        masha.setAge(13);
-        Person jane = new Person("Женя");
-        jane.setAge(24);
-        Person ivan = new Person("Ваня");
-        ivan.setAge(25);
+        Person irina = new Person("Ирина", 10);
+        Person vasya = new Person("Вася", 11);
+        Person masha = new Person("Маша", 13);
+        Person jane = new Person("Женя", 24);
+        Person ivan = new Person("Ваня", 25);
+
         GeoTree gt = new GeoTree();
-        gt.append(irina, vasya);
-        gt.append(irina, masha);
+        gt.appendParent(irina, vasya);
+        gt.appendParent(irina, masha);
         gt.appendSibling(vasya, masha);
         gt.appendSibling(masha, vasya);
-        gt.append(vasya, jane);
-        gt.append(vasya, ivan);
+        gt.appendParent(vasya, jane);
+        gt.appendParent(vasya, ivan);
         gt.appendSibling(jane, ivan);
         gt.appendSibling(ivan, jane);
 
@@ -31,7 +27,7 @@ public class Main {
 
         System.out.println(new Research(gt).ageMoreThan(gt,13));
 
-        System.out.println(new Research(gt).familyTies(gt,irina,vasya));
+      //  System.out.println(new Research(gt).familyTies(gt,irina,vasya));
     }
 
 }
