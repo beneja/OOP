@@ -6,7 +6,7 @@ import java.util.Comparator;
 public class FatigueComparator implements Comparator<Animal> {
 
     @Override
-    public int compare(Animal o1, Animal o2) {
-        return o1.getFatigue() - o2.getFatigue();
+    public int compare(Object o1, Object o2) {
+        return o1.getFatigue() - o2.getFatigue(); //??
     }
 }
