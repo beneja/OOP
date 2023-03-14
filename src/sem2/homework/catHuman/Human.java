@@ -10,14 +10,11 @@ public class Human extends Animal implements BaseAction {
     }
     public void callСat(Cat cat){//позвать кошку
         System.out.println("Кис-кис");
-        cat.defaultReaction();
+        cat.reaction();
     }
     public void feed(Cat cat){//кормим кошку
         cat.eat();//кошка есть
         System.out.println("Кошка поела");
-    }
-    public void wakeUp(Cat cat){
-        cat.wakeUp();
     }
 
     public Condition getCondition() {
@@ -37,7 +34,6 @@ public class Human extends Animal implements BaseAction {
 
     @Override
     public void move() {
-        System.out.println("Не понимает куда идти");
+        this.setFatigue(-1);
     }
-
 }

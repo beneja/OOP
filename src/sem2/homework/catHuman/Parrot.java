@@ -1,6 +1,5 @@
 package sem2.homework.catHuman;
 
-import sem1.homework.GeoTree.Person;
 
 public class Parrot extends Animal implements Fly, Say, BaseAction, CreatureAction{
     private String color;
@@ -29,17 +28,18 @@ public class Parrot extends Animal implements Fly, Say, BaseAction, CreatureActi
     }
 
     @Override
-    public void eat() {
-
+    public void eat(){
+        this.setFatigue(+2);
+        System.out.println("Попугай поел");
     }
 
     @Override
     public void reaction() {
-
+        System.out.println("Отпусти меня в Африку");
     }
 
     @Override
     public void move() {
-
+        this.setFatigue(-1);
     }
 }
