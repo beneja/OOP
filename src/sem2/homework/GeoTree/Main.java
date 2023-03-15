@@ -27,7 +27,9 @@ public class Main {
 
         System.out.println(gt.ageMoreThan(gt,13));
 
-        gt.familyTies(gt);
+        gt.findRelatives(vasya);
+
+       // gt.familyTies(gt);
     }
 
 }

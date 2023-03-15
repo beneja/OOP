@@ -1,9 +1,10 @@
 package sem2.homework.GeoTree;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class GeoTree implements Research{
-    private ArrayList<Node> tree = new ArrayList<>();
+    private final ArrayList<Node> tree = new ArrayList<>();
 
     ArrayList<String> result = new ArrayList<>();
     HashMap<String,Integer> resultAge = new HashMap<>();
@@ -23,10 +24,18 @@ public class GeoTree implements Research{
         } else {tree.add(new Node(sibling1, Relationship.brother, sibling2));}
     }
 
+    public void findRelatives(Person p){
+        for (Node t: tree) {
+            if(t.p1.getFullName().equals(p.getFullName())){
+                System.out.printf("%s %s %s%n",p.getFullName(), t.re, t.p2.getFullName());
+            }
+        }
+    }
+
     @Override
     public ArrayList<String> spend(Person p, Relationship re) {
         for (Node t : tree) {
-            if (t.p1.getFullName() == p.getFullName() && t.re == re) {
+            if (Objects.equals(t.p1.getFullName(), p.getFullName()) && t.re == re) {
                 result.add(t.p2.getFullName());
             }
         }
