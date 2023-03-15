@@ -29,7 +29,7 @@ public class Parrot extends Animal implements Fly, Say, BaseAction, CreatureActi
 
     @Override
     public void eat(){
-        this.setFatigue(+2);
+        this.setFatigue(this.getFatigue()+2);
         System.out.println("Попугай поел");
     }
 
@@ -40,6 +40,6 @@ public class Parrot extends Animal implements Fly, Say, BaseAction, CreatureActi
 
     @Override
     public void move() {
-        this.setFatigue(-1);
+        this.setFatigue(this.getFatigue()-1);
     }
 }

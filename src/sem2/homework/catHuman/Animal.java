@@ -22,6 +22,6 @@ public abstract class Animal {
 
     @Override
     public String toString() {
-        return String.format("%s, %d",name,fatigue);
+        return String.format("%s.%d",name,fatigue);
     }
 }

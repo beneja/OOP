@@ -8,7 +8,7 @@ public class Hamster extends Animal implements BaseAction, CreatureAction {
 
     @Override
     public void eat(){
-        this.setFatigue(+2);
+        this.setFatigue(this.getFatigue()+2);
         System.out.println("Хомяк поел");
     }
 
@@ -22,6 +22,6 @@ public class Hamster extends Animal implements BaseAction, CreatureAction {
 
     @Override
     public void move() {
-        this.setFatigue(-1);
+        this.setFatigue(this.getFatigue()-1);
     }
 }

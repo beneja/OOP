@@ -8,13 +8,13 @@ public class Cat extends Animal implements BaseAction, CreatureAction {
 
     @Override
     public void eat(){
-        this.setFatigue(+2);
+        this.setFatigue(this.getFatigue()+2);
         System.out.println("Кошка поела");
     }
 
     @Override
     public void move() {
-        this.setFatigue(-1);
+        this.setFatigue(this.getFatigue()-1);
     }
 
     @Override
