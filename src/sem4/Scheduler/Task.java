@@ -1,8 +1,9 @@
 package sem4.Scheduler;
 
+
 import java.time.LocalDateTime;
 
-public class Task extends DataForm{
+public class Task extends DataForm implements Comparable<Task> {
     private final Author author;
     private String title;
     private String description;
@@ -19,6 +20,7 @@ public class Task extends DataForm{
         this.timeCreate = LocalDateTime.now();
         this.completionTime = completionTime;
     }
+
     public String getTitle() {
         return title;
     }
@@ -63,13 +65,31 @@ public class Task extends DataForm{
     public String toString() {
         String result = "";
         result += String.format("Автор: %s\n" +
-                "Время создания: %s\n" +
-                "Заголовок: %s\n" +
-                "Описание: %s\n" +
-                "Дедлайн: %s", this.author, normalizedData(this.timeCreate), this.title,
+                        "Время создания: %s\n" +
+                        "Заголовок: %s\n" +
+                        "Описание: %s\n" +
+                        "Дедлайн: %s\n", this.author, normalizedData(this.timeCreate), this.title,
                 this.description, normalizedData(this.completionTime));
 
 
         return result;
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public int compareTo(Task t) {
+        if (t.getCompletionTime().isEqual(this.getCompletionTime())) {
+            return 0;
+        }
+        if (t.getCompletionTime().isBefore(this.getCompletionTime())) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
 }
