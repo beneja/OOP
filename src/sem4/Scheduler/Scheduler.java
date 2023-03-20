@@ -6,13 +6,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Scheduler {
-    private ArrayList<Task> taskList;
-    private Scanner sn = new Scanner(System.in);
-
-    public Scheduler(ArrayList<Task> taskList) {
-        this.taskList = taskList;
-    }
+public class Scheduler implements SchedulerAction {
+    private final ArrayList<Task> taskList = new ArrayList<>();
+    private static Scanner sn = new Scanner(System.in);
 
     public void addTask(Author author) {
         System.out.println("Введите название задачи: ");
@@ -41,23 +37,31 @@ public class Scheduler {
             System.out.println("Установлен срок выполнения по умолчанию - неделя");
         }
         taskList.add(new Task(author, title, description, priority, completionTime));
+        System.out.println("Задача создана");
+        System.out.println(taskList.get(taskList.size() - 1));
     }
 
+    @Override
     public void showTasks() {
         int count = 1;
         for (Task t : taskList) {
             System.out.print("Задача номер" + count + ": ");
             System.out.println(t);
+            count++;
         }
     }
 
+    @Override
     public void showSortedByCompletionTime() {
         taskList.sort(new CompletionTimeComparator());
+        showTasks();
     }
 
+    @Override
     public void completeTask() {
         System.out.println("Какую по счёту задачу удалить? ");
-        int index = sn.nextInt() + 1;
+        int index = sn.nextInt() - 1;
         taskList.remove(index);
+        System.out.println("Задача завершена");
     }
 }

@@ -1,12 +1,9 @@
 package sem4.Scheduler;
 
-import java.util.UUID;
-
 public class Author {
     private String surname;
     private String name;
     private String middleName;
-
 
 
     public Author(String surname, String name, String middleName) {
@@ -43,6 +40,6 @@ public class Author {
 
     @Override
     public String toString() {
-        return String.format("%s %s %s",surname,name,middleName);
+        return String.format("%s %s %s", surname, name, middleName);
     }
 }

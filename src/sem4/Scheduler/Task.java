@@ -2,6 +2,7 @@ package sem4.Scheduler;
 
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class Task extends DataForm implements Comparable<Task> {
     private final Author author;
@@ -10,6 +11,7 @@ public class Task extends DataForm implements Comparable<Task> {
     private Priority priority;
     private final LocalDateTime timeCreate;
     private LocalDateTime completionTime;
+    private UUID id;
 
     public Task(Author author, String title, String description, Priority priority,
                 LocalDateTime completionTime) {
@@ -19,6 +21,15 @@ public class Task extends DataForm implements Comparable<Task> {
         this.priority = priority;
         this.timeCreate = LocalDateTime.now();
         this.completionTime = completionTime;
+        this.id = UUID.randomUUID();
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -64,11 +75,14 @@ public class Task extends DataForm implements Comparable<Task> {
     @Override
     public String toString() {
         String result = "";
-        result += String.format("Автор: %s\n" +
-                        "Время создания: %s\n" +
-                        "Заголовок: %s\n" +
-                        "Описание: %s\n" +
-                        "Дедлайн: %s\n", this.author, normalizedData(this.timeCreate), this.title,
+        result += String.format("""
+                        id: %s
+                        Автор: %s
+                        Время создания: %s
+                        Заголовок: %s
+                        Описание: %s
+                        Дедлайн: %s
+                        """, this.id, this.author, normalizedData(this.timeCreate), this.title,
                 this.description, normalizedData(this.completionTime));
 
 
