@@ -3,12 +3,12 @@ package sem5.CalcZ;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Arrays;
-import java.util.Scanner;
 import java.util.StringTokenizer;
+
+import static sem5.CalcZ.Main.sn;
 
 public class Processing {
 
-    private static Scanner sn = new Scanner(System.in);
     public static ComplexNumber createComplexNumber() throws ParseException {
 
         System.out.println("Введите комплексное число в алгебраической форме:");

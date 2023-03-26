@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import static java.lang.System.exit;
 import static sem5.CalcZ.Processing.*;
+import static sem5.CalcZ.Calc.*;
 
 
 public class Main {
@@ -75,7 +76,7 @@ public class Main {
                         operands.add(n2);
                         System.out.println(n2);}
                     case 3 -> op = setOp();
-                    case 4 -> System.out.println(Calc.calc(operands.getOperands(0),operands.getOperands(1),op));
+                    case 4 -> System.out.println(calc(operands.getOperands(0),operands.getOperands(1),op));
                     case 5 -> exit(0);
                 }
             } catch (Exception ex) {
