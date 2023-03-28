@@ -22,7 +22,9 @@ public class ComplexNumber extends RealNumber{
 
     @Override
     public String toString() {
-        return String.format("%s + %si",Im , Im);
+        return String.format("%s + %si", getRe(), Im);
     }
-
+//    public boolean isComplex(){
+//
+//    }
 }

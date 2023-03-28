@@ -9,10 +9,18 @@ public class Operands <T extends RealNumber>{
         this.operands = operands;
     }
 
-    public T getOperands(int index) {
+    public T getOperand(int index) {
         return operands.get(index);
     }
     public void add (T r){
         operands.add(r);
+    }
+    public void remove(int index){
+        operands.remove(index);
+    }
+
+    @Override
+    public String toString() {
+        return operands.toString();
     }
 }

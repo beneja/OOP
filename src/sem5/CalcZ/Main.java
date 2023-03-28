@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -34,12 +35,14 @@ public class Main {
     }
     public static char setOp(){
         System.out.println("Выберите операцию: + - * /");
-        char preOp = sn.next().charAt(0);
+        char op = '.';
         char[] operations = new char[]{'+','-','*','/'};
-        while(!existA(preOp, operations)){
-            preOp = sn.next().charAt(0);
-            op = preOp;
-        } return op;
+        while(!existA(op, operations)){
+            Scanner sn = new Scanner(System.in);
+            op = sn.next().charAt(0);
+
+        }return op;
+
     }
     private static boolean existA(char a, char[]ops){
         for (char op: ops) {
@@ -57,27 +60,49 @@ public class Main {
                 "2 - Задать комплексное число",
                 "3 - Задать действие",
                 "4 - Равно",
-                "5 - Выход",
+                "5 - Показать операнды",
+                "6 - Удалить операнды",
+                "7 - Выход",
         };
         int option = 1;
         char op = '.';
-        while (option != 5) {
+        while (option != 7) {
             printMenu(options);
             try {
                 option = sn.nextInt();
                 switch (option) {
                     case 1 ->{
                          RealNumber n1 = createRealNumber();
-                    operands.add(n1);
-                        System.out.println(operands.getOperands(0));
+                    operands.add( n1);
+                        LOGGER.log(Level.INFO,"Задано рациональное число " + n1);
+                        System.out.println(n1);
                     }
                     case 2 ->{
                         ComplexNumber n2 = createComplexNumber();
                         operands.add(n2);
+                        LOGGER.log(Level.INFO,"Задано комплексное число " + n2);
                         System.out.println(n2);}
-                    case 3 -> op = setOp();
-                    case 4 -> System.out.println(calc(operands.getOperands(0),operands.getOperands(1),op));
-                    case 5 -> exit(0);
+                    case 3 -> {op = setOp();
+                        LOGGER.log(Level.INFO,"Задано действие " + op);
+                        System.out.println(op);}
+                    case 4 ->
+                    { if((operands.getOperand(0).getClass().isInstance(new ComplexNumber(1,1))) &&
+                            (operands.getOperand(1).getClass().isInstance(new ComplexNumber(1,1)))){
+                        System.out.println(calc1( operands.getOperand(0), operands.getOperand(0),op));      //не забирает комплексные числа
+                    } else if ((operands.getOperand(0).getClass().isInstance(new ComplexNumber(1,1))) &&
+                            (operands.getOperand(1).getClass().isInstance(new RealNumber(1)))) {
+                        System.out.println(calc2( operands.getOperand(0),operands.getOperand(1),op));       //не забирает комплексные числа
+                    } else if ((operands.getOperand(0).getClass().isInstance(new RealNumber(1))) &&
+                            (operands.getOperand(1).getClass().isInstance(new ComplexNumber(1,1)))) {
+                        System.out.println(calc3(operands.getOperand(0), operands.getOperand(1),op));       //не забирает комплексные числа
+                    } else System.out.println(calc4(operands.getOperand(0),operands.getOperand(1),op));}
+
+                    case 5 -> {System.out.println(operands);
+                    LOGGER.log(Level.INFO,"Вывод операндов " + operands);}
+                    case 6 -> {operands.remove(0);
+                               operands.remove(1);
+                        LOGGER.log(Level.INFO,"Операнды удалены");}
+                    case 7 -> exit(0);
                 }
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());

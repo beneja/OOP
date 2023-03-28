@@ -19,10 +19,6 @@ public class Processing {
         return new ComplexNumber(arr[0], arr[1]);
     }
 
-    public boolean isComplex(String str) {
-        return str.charAt(str.length() - 1) == 'i';
-    }
-
     public static double[] parseComplexNumber(String str)
             throws ParseException {
         double[] arr = new double[2];
@@ -61,7 +57,6 @@ public class Processing {
     }
     public static RealNumber createRealNumber(){
         System.out.println("Введите число:");
-        //action.add( new RealNumber(sn.nextDouble()));
         return new RealNumber(sn.nextDouble());
     }
 }
