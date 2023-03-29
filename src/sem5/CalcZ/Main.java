@@ -88,13 +88,13 @@ public class Main {
                     case 4 ->
                     { if((operands.getOperand(0).getClass().isInstance(new ComplexNumber(1,1))) &&
                             (operands.getOperand(1).getClass().isInstance(new ComplexNumber(1,1)))){
-                        System.out.println(calc1( operands.getOperand(0), operands.getOperand(0),op));      //не забирает комплексные числа
+                        System.out.println(calc1((ComplexNumber) operands.getOperand(0), (ComplexNumber) operands.getOperand(0),op));      //не забирает комплексные числа
                     } else if ((operands.getOperand(0).getClass().isInstance(new ComplexNumber(1,1))) &&
                             (operands.getOperand(1).getClass().isInstance(new RealNumber(1)))) {
-                        System.out.println(calc2( operands.getOperand(0),operands.getOperand(1),op));       //не забирает комплексные числа
+                        System.out.println(calc2((ComplexNumber) operands.getOperand(0),operands.getOperand(1),op));       //не забирает комплексные числа
                     } else if ((operands.getOperand(0).getClass().isInstance(new RealNumber(1))) &&
                             (operands.getOperand(1).getClass().isInstance(new ComplexNumber(1,1)))) {
-                        System.out.println(calc3(operands.getOperand(0), operands.getOperand(1),op));       //не забирает комплексные числа
+                        System.out.println(calc3(operands.getOperand(0), (ComplexNumber) operands.getOperand(1),op));       //не забирает комплексные числа
                     } else System.out.println(calc4(operands.getOperand(0),operands.getOperand(1),op));}
 
                     case 5 -> {System.out.println(operands);
